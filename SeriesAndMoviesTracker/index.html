@@ -13,12 +13,50 @@
             <button>Registrar Película</button>
 
             <!-- FORMULARIO PARA REGISTRAR PELICULA -->
-            <form action="#" class="hidden">
+            <form action="#" class="movie_form hidden">
                 <input type="text" class="movie_name" placeholder="Nombre de la Película">
+
+                <!-- ESTADO PELICULA -->
+                <fieldset>
+                    <legend>Elige un estado:</legend>
+                    <div class="status">
+                        <input type="radio" name="movie_status" id="seen_status_movie" value="seen">
+                        <label for="seen_status_movie">Vista</label>
+                    </div>
+    
+                    <div class="status">
+                        <input type="radio" name="movie_status" id="pending_status_movie" value="pending" checked>
+                        <label for="pending_status_movie">Pendiente</label>
+                    </div>
+                </fieldset>
+                <input class="register-movie" type="submit" value="Registrar">
             </form>
         </div>
         <div class="serie">
             <button>Registrar Serie</button>
+
+            <!-- FORMULARIO PARA REGISTRAR SERIE -->
+            <form action="#" class="serie_form hidden">
+                <input type="text" class="serie_name" placeholder="Nombre de la serie">
+                <input type="number" class="season" name="season" placeholder="Temporada">
+                <input type="number" class="episode" name="episode" placeholder="Episodio">
+
+                <!-- ESTADO SERIE -->
+                <fieldset>
+                    <legend>Elige un estado:</legend>
+                    <div class="status">
+                        <input type="radio" name="series_status" id="finished_status_serie">
+                        <label for="finished_status_serie">Finalizada</label>
+                    </div>
+                    
+                    <div class="status">
+                        <input type="radio" name="series_status" id="pending_status_series">
+                        <label for="pending_status_series">Pendiente</label>
+                    </div>
+                </fieldset>
+
+                <input class="register-serie" type="submit" value="Registrar">
+            </form>
         </div>
     </div>
     <!-- SCRIPTS -->
