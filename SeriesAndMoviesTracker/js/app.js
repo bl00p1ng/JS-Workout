@@ -36,15 +36,26 @@ const registerMovie = document.querySelector('.register-movie')
 
 // Registrar pelicula
 const movieName = document.querySelector('.movie_name')
-const movieStatus = document.querySelector('#seen_status_movie')
+const seenStatusMovie = document.querySelector('#seen_status_movie')
+const pendingStatusMovie = document.querySelector('#pending_status_movie')
 
 registerMovie.addEventListener('click', () => {
-    movies.push({name: movieName.value, movieStatus: movieStatus.value})
+    movieStatus = ''
+
+    if (seenStatusMovie.checked === true) {
+        movieStatus = 'seen'
+    } else if (pendingStatusMovie.checked === true) {
+        movieStatus = 'pending'
+    }
+
+    movies.push({name: movieName.value, movieStatus: movieStatus})
     console.log(movies);
 })
 
 
 // Series
-const serieName = document.querySelector('.serie_name').textContent
-const season = parseInt(document.querySelector('.season').textContent)
-const episode = parseInt(document.querySelector('.episode').textContent)
+const registerSerie = document.querySelector('.register-serie')
+
+const serieName = document.querySelector('.serie_name')
+const season = document.querySelector('.season')
+const episode = document.querySelector('.episode')
