@@ -59,3 +59,18 @@ const registerSerie = document.querySelector('.register-serie')
 const serieName = document.querySelector('.serie_name')
 const season = document.querySelector('.season')
 const episode = document.querySelector('.episode')
+const finishedStatusSerie = document.querySelector('#finished_status_serie')
+const pendingStatusSerie = document.querySelector('#pending_status_series')
+
+registerSerie.addEventListener('click', () => {
+    serieStatus = ''
+
+    if (finishedStatusSerie.checked === true) {
+        serieStatus = 'finished'
+    } else if (pendingStatusSerie.checked === true) {
+        serieStatus = 'pending'
+    }
+
+    series.push({name: serieName.value, season: parseInt(season.value), episode: parseInt(episode.value), serieStatus: serieStatus})
+    console.log(series);
+})
