@@ -7,7 +7,7 @@
 }
 
 .show {
-    visibility: visible;
+    visibility: visible !important;
 }
 
 .movie-view, .serie-view {
@@ -15,6 +15,10 @@
     border-radius: 5px;
     margin: 10px 0;
     padding: 10px;
+}
+
+.show-movies, .show-series {
+    visibility: hidden;
 }
 
 button, .register-serie, .register-movie {
