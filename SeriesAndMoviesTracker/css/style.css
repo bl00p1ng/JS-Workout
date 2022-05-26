@@ -1,7 +1,22 @@
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 .hidden {
     visibility: hidden;
 }
 
 .show {
     visibility: visible;
+}
+
+.movie-view, .serie-view {
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+button, .register-serie, .register-movie {
+    margin: 5px 0;
 }
