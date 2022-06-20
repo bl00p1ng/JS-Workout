@@ -2,10 +2,6 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.hidden {
-    visibility: hidden;
-}
-
 .show {
     visibility: visible !important;
 }
