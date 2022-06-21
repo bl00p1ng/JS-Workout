@@ -17,6 +17,23 @@ export default class App {
         const movies = new Movies();
         const series = new Series();
 
+        // Cargar datos desde localStorage
+        document.addEventListener('DOMContentLoaded', () => {
+            // Obtener datos
+            const moviesData = JSON.parse(localStorage.getItem('movies'))
+            const seriesData = JSON.parse(localStorage.getItem('series'))
+
+            // Cargar datos de las peliculas en la App
+            if (moviesData) {
+                movies.loadData(moviesData)
+            }
+
+            // Cargar datos de las series en la App
+            if (seriesData) {
+                series.loadData(seriesData)
+            }
+        })
+
         // Registrar pelicula
         movieForm.addEventListener('submit', e => {
             e.preventDefault()
