@@ -3,6 +3,11 @@ export default class Series {
         this.series = []  // Almacena las series
     }
 
+    // Cargar los datos de las peliculas desde localStorage
+    loadData(series) {
+        series.forEach(serie => this.createSeries(serie))
+    }
+
     // Guardar una serie
     createSeries(seriesData) {
         this.series = [...this.series, seriesData]
@@ -16,9 +21,4 @@ export default class Series {
         return this.series
     }
 
-    // Cargar los datos de las peliculas desde localStorage
-    loadData(series) {
-        series.forEach(serie => this.createSeries(serie))
-        console.log(this.series);
-    }
 }

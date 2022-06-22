@@ -1,6 +1,8 @@
 import UI from './UI.js';
 import {movieForm, 
         serieForm,
+        showMovies,
+        registerMovie,
         showDataBtn} from '../selectors.js'
 import Movies from './Movies.js';
 import Series from './Series.js';
@@ -34,15 +36,39 @@ export default class App {
             }
         })
 
+        // ********** CREATE **********
         // Registrar pelicula
         movieForm.addEventListener('submit', e => {
             e.preventDefault()
 
-            // Obtener datos del form
-            const movieData = ui.getMovieFromForm()
+            // Verificar si el boton esta en modo crear o actualizar
+            const buttonStatus = e.target.children[2].value
+            console.log(buttonStatus);
 
-            // Guardar pelicula
-            movies.createMovie(movieData)
+            if (buttonStatus === 'Registrar') {  // Registrar pelicula
+                // Obtener datos del form
+                const movieData = ui.getMovieFromForm()
+    
+                // Guardar pelicula
+                movies.createMovie(movieData)
+            } else if (buttonStatus === 'Actualizar') {  // Actualizar pelicula
+                // Obtener datos nuevos
+                const newMovieData = ui.getMovieFromForm()
+
+                // Leer el ID de la pelicula actualizar del LocalStorage
+                const idToUpdate = localStorage.getItem('idToUpdate')
+                // Pasar el ID de la pelicula actualizar a los datos nuevos
+                newMovieData.id = Number(idToUpdate)
+
+                // Actualizar la pelicula correspondiente
+                movies.updateMovie(newMovieData)
+
+                // Reseterar el ID de la pelicula a actualizar
+                localStorage.removeItem('idToUpdate')
+
+                // Cambiar texto del botón de 'Actualizar' a 'Registrar'
+                ui.changeButtonRole('Registrar', 'movie')
+            }
         })
 
         // Resgistrar serie
@@ -55,6 +81,7 @@ export default class App {
             series.createSeries(seriesData)
         })
 
+        // ********** READ **********
         // Mostrar elementos guardados
         showDataBtn.addEventListener('click', () => {
             // Limpiar elementos existentes del DOM
@@ -65,6 +92,22 @@ export default class App {
     
             const seriesList = series.getSeries()  // Obtener el listado de series guardadas
             ui.showSeries(seriesList)  // Mostrar series
+        })
+
+        // ********** UPDATE **********
+        // Actualizar pelicula
+        showMovies.addEventListener('click', e => {
+           // Verificar si se esta presionando el boton de editar
+           if (e.target.classList.contains('edit-btn')) {
+               // Obtener el ID de la pelicula a actualizar
+               const idToUpdate = ui.updateMovie(e)
+
+               // Guardar el ID en localStorage para que este disponible al editar la pelicula
+               localStorage.setItem('idToUpdate', idToUpdate)
+
+               // Cambiar texto del botón de 'Registrar' a 'Actualizar'
+               ui.changeButtonRole('Actualizar', 'movie')
+           }
         })
     }
 }
