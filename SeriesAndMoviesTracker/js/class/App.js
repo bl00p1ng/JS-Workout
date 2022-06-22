@@ -3,7 +3,8 @@ import {movieForm,
         serieForm,
         showMovies,
         registerMovie,
-        showDataBtn} from '../selectors.js'
+        showDataBtn,
+        showSeries} from '../selectors.js'
 import Movies from './Movies.js';
 import Series from './Series.js';
 
@@ -43,7 +44,6 @@ export default class App {
 
             // Verificar si el boton esta en modo crear o actualizar
             const buttonStatus = e.target.children[2].value
-            console.log(buttonStatus);
 
             if (buttonStatus === 'Registrar') {  // Registrar pelicula
                 // Obtener datos del form
@@ -56,7 +56,7 @@ export default class App {
                 const newMovieData = ui.getMovieFromForm()
 
                 // Leer el ID de la pelicula actualizar del LocalStorage
-                const idToUpdate = localStorage.getItem('idToUpdate')
+                const idToUpdate = localStorage.getItem('idMovieToUpdate')
                 // Pasar el ID de la pelicula actualizar a los datos nuevos
                 newMovieData.id = Number(idToUpdate)
 
@@ -64,7 +64,7 @@ export default class App {
                 movies.updateMovie(newMovieData)
 
                 // Reseterar el ID de la pelicula a actualizar
-                localStorage.removeItem('idToUpdate')
+                localStorage.removeItem('idMovieToUpdate')
 
                 // Cambiar texto del botón de 'Actualizar' a 'Registrar'
                 ui.changeButtonRole('Registrar', 'movie')
@@ -75,10 +75,32 @@ export default class App {
         serieForm.addEventListener('submit', e => {
             e.preventDefault()
 
-            // Obtener datos del form
-            const seriesData = ui.getSeriesFromForm()
+            // Verificar si el boton esta en modo crear o actualizar
+            const buttonStatus = e.target.children[4].value
+            console.log(buttonStatus);
+            if (buttonStatus === 'Registrar') {  // Registrar serie
+                // Obtener datos del form
+                const seriesData = ui.getSeriesFromForm()
+    
+                series.createSeries(seriesData)
+            } else if (buttonStatus === 'Actualizar') {  // Actualizar serie
+                // Obtener datos nuevos
+                const newSeriesData = ui.getSeriesFromForm()
 
-            series.createSeries(seriesData)
+                // Leer el ID de la serie a actualizar del LocalStorage
+                const idToUpdate = localStorage.getItem('idSerieToUpdate')
+                // Pasar el ID de la serie a actualizar a los datos nuevos
+                newSeriesData.id = Number(idToUpdate)
+
+                // Actualizar la serie correspondiente
+                series.updateSeries(newSeriesData)
+
+                // Reseterar el ID de la serie a actualizar
+                localStorage.removeItem('idSerieToUpdate')
+
+                // Cambiar texto del botón de 'Actualizar' a 'Registrar'
+                ui.changeButtonRole('Registrar', 'series')
+            }
         })
 
         // ********** READ **********
@@ -103,11 +125,26 @@ export default class App {
                const idToUpdate = ui.updateMovie(e)
 
                // Guardar el ID en localStorage para que este disponible al editar la pelicula
-               localStorage.setItem('idToUpdate', idToUpdate)
+               localStorage.setItem('idMovieToUpdate', idToUpdate)
 
                // Cambiar texto del botón de 'Registrar' a 'Actualizar'
                ui.changeButtonRole('Actualizar', 'movie')
            }
+        })
+
+        // Actualizar serie
+        showSeries.addEventListener('click', e => {
+            // Verificar si se esta presionando el boton de editar
+            if (e.target.classList.contains('edit-btn')) {
+                // Obtener el ID de la serie a actualizar
+                const idToUpdate = ui.updateSeries(e)
+ 
+                // Guardar el ID en localStorage para que este disponible al editar la serie
+                localStorage.setItem('idSerieToUpdate', idToUpdate)
+ 
+                // Cambiar texto del botón de 'Registrar' a 'Actualizar'
+                ui.changeButtonRole('Actualizar', 'series')
+            }
         })
     }
 }

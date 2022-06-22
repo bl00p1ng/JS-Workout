@@ -159,6 +159,34 @@ export default class UI {
         return currentId
     }
 
+    // Actualizar serie
+    updateSeries(e) {
+        // Obtener los datos actuales de la serie
+        const currentId = e.target.parentNode.attributes[1].value
+        const currentName = e.target.parentNode.children[0].textContent
+        const currentSeason = e.target.parentNode.children[1].textContent.replace(/[^0-9]/g, '')
+        const currentEpisode = e.target.parentNode.children[2].textContent.replace(/[^0-9]/g, '')
+        const currentStatus = e.target.parentNode.children[3].textContent
+
+        // Reemplazar los campos del form con los datos actuales
+        serieName.value = currentName
+        season.value = currentSeason
+        episode.value = currentEpisode
+
+        console.log(currentId, currentName, currentSeason, currentEpisode, currentStatus);
+
+        // Modificar el input radio en base al estado
+        if (currentStatus === 'Finalizada') {
+            pendingStatusSerie.removeAttribute('checked')
+            finishedStatusSerie.setAttribute('checked', true)
+        } else if (currentStatus === 'Pendiente') {
+            finishedStatusSerie.removeAttribute('checked')
+            pendingStatusSerie.setAttribute('checked', true)
+        }
+
+        return currentId
+    }
+
     // Cambiar el texto del boton de registrar
     changeButtonRole(btnText, type) {
         if (type === 'movie') {
