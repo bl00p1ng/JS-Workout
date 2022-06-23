@@ -83,11 +83,17 @@ export default class UI {
             const editBtn = document.createElement('button')
             editBtn.classList.add('edit-btn')
             editBtn.innerHTML = '<span class="edit-icon"><svg class="w-6 h-6" data-darkreader-inline-stroke="" fill="none" stroke="currentColor" style="--darkreader-inline-stroke: currentColor;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg></span> Editar'
+
+            // Botón de eliminar
+            const deleteBtn = document.createElement('button')
+            deleteBtn.classList.add('delete-btn')
+            deleteBtn.innerHTML = '<span class="delete-icon"><svg class="w-6 h-6" data-darkreader-inline-stroke="" fill="none" stroke="currentColor" style="--darkreader-inline-stroke: currentColor;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></span> Eliminar'
             
-            // Agregar el titulo, el estado y el boton de editar al DIV movieView
+            // Agregar el titulo, el estado, el boton de editar y eliminar al DIV movieView
             movieView.appendChild(movieTitle)
             movieView.appendChild(movieStatus)
             movieView.appendChild(editBtn)
+            movieView.appendChild(deleteBtn)
     
             // Agregar el movieView al DOM
             showMovies.appendChild(movieView)
@@ -173,8 +179,6 @@ export default class UI {
         season.value = currentSeason
         episode.value = currentEpisode
 
-        console.log(currentId, currentName, currentSeason, currentEpisode, currentStatus);
-
         // Modificar el input radio en base al estado
         if (currentStatus === 'Finalizada') {
             pendingStatusSerie.removeAttribute('checked')
@@ -185,6 +189,20 @@ export default class UI {
         }
 
         return currentId
+    }
+
+    // Eliminar pelicula
+    deleteMovie(e) {
+        // Comprobar con el usuario la eliminación de la pelicula
+        const confirmDelete = confirm('¿Deseas eliminar esta película?')
+
+        if (confirmDelete) {
+            const idToDelete = e.target.parentNode.attributes[1].value
+            console.log(idToDelete);
+            return idToDelete
+        } else {
+            return null
+        }
     }
 
     // Cambiar el texto del boton de registrar

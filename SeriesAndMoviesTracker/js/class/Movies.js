@@ -25,6 +25,15 @@ export default class Movies {
         localStorage.setItem('movies', JSON.stringify(this.movies))
     }
 
+    // Eliminar una película por su ID
+    deleteMovie(idToDelete) {
+        // Buscar la pelicula con el ID deseado y eliminarla
+        this.movies = this.movies.filter(movie => movie.id !== idToDelete)
+
+        // Guardar cambios en localStorage
+        localStorage.setItem('movies', JSON.stringify(this.movies))
+    }
+
     // Getter de movies
     getMovies() {
         return this.movies

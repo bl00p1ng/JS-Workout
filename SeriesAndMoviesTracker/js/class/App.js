@@ -116,20 +116,35 @@ export default class App {
             ui.showSeries(seriesList)  // Mostrar series
         })
 
-        // ********** UPDATE **********
-        // Actualizar pelicula
+        // ********** UPDATE y DELETE **********
+        // Actualizar o eliminar pelicula
         showMovies.addEventListener('click', e => {
-           // Verificar si se esta presionando el boton de editar
-           if (e.target.classList.contains('edit-btn')) {
-               // Obtener el ID de la pelicula a actualizar
-               const idToUpdate = ui.updateMovie(e)
+            // Verificar si se esta presionando el boton de editar
+            if (e.target.classList.contains('edit-btn')) {
+                // Obtener el ID de la pelicula a actualizar
+                const idToUpdate = ui.updateMovie(e)
 
-               // Guardar el ID en localStorage para que este disponible al editar la pelicula
-               localStorage.setItem('idMovieToUpdate', idToUpdate)
+                // Guardar el ID en localStorage para que este disponible al editar la pelicula
+                localStorage.setItem('idMovieToUpdate', idToUpdate)
 
-               // Cambiar texto del botón de 'Registrar' a 'Actualizar'
-               ui.changeButtonRole('Actualizar', 'movie')
-           }
+                // Cambiar texto del botón de 'Registrar' a 'Actualizar'
+                ui.changeButtonRole('Actualizar', 'movie')
+            }
+            // Verificar si se esta presionando el boton de eliminar
+            else if (e.target.classList.contains('delete-btn')) {
+                // Obtener el ID de la pelicula a eliminar
+                const idToDelete = ui.deleteMovie(e)
+
+                if (idToDelete) {
+                    // Eliminar pelicula
+                    movies.deleteMovie(Number(idToDelete))
+
+                    // Actualizar los elementos mostrados en la vista
+                    ui.clearHTML()
+                    ui.showMovies(movies.getMovies())
+                    ui.showSeries(series.getSeries())
+                }
+            }
         })
 
         // Actualizar serie
