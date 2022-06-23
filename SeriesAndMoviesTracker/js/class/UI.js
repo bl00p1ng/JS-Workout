@@ -130,6 +130,11 @@ export default class UI {
             const editBtn = document.createElement('button')
             editBtn.classList.add('edit-btn')
             editBtn.innerHTML = '<span class="edit-icon"><svg class="w-6 h-6" data-darkreader-inline-stroke="" fill="none" stroke="currentColor" style="--darkreader-inline-stroke: currentColor;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg></span> Editar'
+
+            // Botón de eliminar
+            const deleteBtn = document.createElement('button')
+            deleteBtn.classList.add('delete-btn')
+            deleteBtn.innerHTML = '<span class="delete-icon"><svg class="w-6 h-6" data-darkreader-inline-stroke="" fill="none" stroke="currentColor" style="--darkreader-inline-stroke: currentColor;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></span> Eliminar'
     
             // Agregar elementos al DIV serieView
             serieView.appendChild(serieTitle)
@@ -137,6 +142,7 @@ export default class UI {
             serieView.appendChild(episode)
             serieView.appendChild(serieStatus)
             serieView.appendChild(editBtn)
+            serieView.appendChild(deleteBtn)
     
             // Agregar el serieView al DOM
             showSeries.appendChild(serieView)
@@ -197,8 +203,22 @@ export default class UI {
         const confirmDelete = confirm('¿Deseas eliminar esta película?')
 
         if (confirmDelete) {
+            // Obtener el ID de la película a eliminar
             const idToDelete = e.target.parentNode.attributes[1].value
-            console.log(idToDelete);
+            return idToDelete
+        } else {
+            return null
+        }
+    }
+
+    // Eliminar serie
+    deleteSeries(e) {
+        // Comprobar con el usuario la eliminación de la serie
+        const confirmDelete = confirm('¿Deseas eliminar esta serie?')
+
+        if (confirmDelete) {
+            // Obtener el ID de la serie a eliminar
+            const idToDelete = e.target.parentNode.attributes[1].value
             return idToDelete
         } else {
             return null

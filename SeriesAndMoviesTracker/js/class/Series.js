@@ -25,6 +25,15 @@ export default class Series {
         localStorage.setItem('series', JSON.stringify(this.series))
     }
 
+    // Eliminar una serie por su ID
+    deleteSeries(idToDelete) {
+        // Buscar la serie con el ID deseado y eliminarla
+        this.series = this.series.filter(serie => serie.id !== idToDelete)
+
+        // Guardar cambios en localStorage
+        localStorage.setItem('series', JSON.stringify(this.series))
+    }
+
     // Getter de series
     getSeries() {
         return this.series

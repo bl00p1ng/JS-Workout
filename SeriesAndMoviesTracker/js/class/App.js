@@ -77,7 +77,7 @@ export default class App {
 
             // Verificar si el boton esta en modo crear o actualizar
             const buttonStatus = e.target.children[4].value
-            console.log(buttonStatus);
+
             if (buttonStatus === 'Registrar') {  // Registrar serie
                 // Obtener datos del form
                 const seriesData = ui.getSeriesFromForm()
@@ -147,7 +147,7 @@ export default class App {
             }
         })
 
-        // Actualizar serie
+        // Actualizar o eliminar serie
         showSeries.addEventListener('click', e => {
             // Verificar si se esta presionando el boton de editar
             if (e.target.classList.contains('edit-btn')) {
@@ -159,6 +159,21 @@ export default class App {
  
                 // Cambiar texto del botón de 'Registrar' a 'Actualizar'
                 ui.changeButtonRole('Actualizar', 'series')
+            }
+            // Verificar si se esta presionando el boton de eliminar
+            else if (e.target.classList.contains('delete-btn')) {
+                // Obtener el ID de la serie a eliminar
+                const idToDelete = ui.deleteSeries(e)
+
+                if (idToDelete) {
+                    // Eliminar serie
+                    series.deleteSeries(Number(idToDelete))
+
+                    // Actualizar los elementos mostrados en la vista
+                    ui.clearHTML()
+                    ui.showMovies(movies.getMovies())
+                    ui.showSeries(series.getSeries())
+                }
             }
         })
     }
