@@ -32,7 +32,7 @@
 
         <!-- MOSTRAR DATOS -->
         <section class="show-data">
-            <h2 class="subtitle">Peliculas guardadas</h2>
+            <h2 class="subtitle">Películas guardadas</h2>
             <div class="show-movies"></div>
 
             <h2 class="subtitle">Series guardadas</h2>
@@ -41,7 +41,31 @@
     </main>
 
     <!-- BOTON FLOTANTE -->
-
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large" title="Crear un registro">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+            </svg>
+        </a>
+        <ul>
+            <li>
+                <span>Registrar Película</span>
+                <a href="/registrar-pelicula.html" class="btn-floating" title="Registrar Película">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <span>Registrar Serie</span>
+                <a href="/resgistrar-serie-html" class="btn-floating" title="Registrar Serie">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z" />
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </div>
 
     <!-- FOOTER -->
     <footer class="footer">
@@ -51,7 +75,7 @@
     </footer>
 
     <!-- SCRIPTS -->
-    <script src="js/util/materialize.min.js"></script>
-    <script src="js/index.js" type="module"></script>
+    <script src="js/util/materialize.min.js" defer></script>
+    <script src="js/util/homepage.js" defer></script>
 </body>
 </html>

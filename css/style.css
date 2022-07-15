@@ -88,6 +88,23 @@ html {
     font-weight: bold;
 }
 
+/* BOTON FLOTANTE */
+.btn-floating {
+    background-color: var(--secondary-color);
+}
+
+li .btn-floating {
+    background-color: var(--primary-color);
+    padding: 0.5rem;
+}
+
+.fixed-action-btn ul li span {
+    position: absolute;
+    right: 4rem;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
 /* .show {
     visibility: visible !important;
 }
