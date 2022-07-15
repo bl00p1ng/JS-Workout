@@ -1,6 +1,7 @@
 /* BASIC */
 :root {
     --primary-color: #6F4FE8;
+    --primary-color-hover: #5a41b3;
     --secondary-color: #1CEDFF;
     --secondary-color-hover: #18a7b4;
     --danger-color: #FF6A99;
@@ -34,6 +35,10 @@ html {
     align-items: center;
 }
 
+.std-y-spacing {
+    margin: var(--std-spacing) 0;
+}
+
 /* TIPOGRAFIA */
 .title {
     font-size: var(--title-size);
@@ -44,6 +49,7 @@ html {
 .subtitle {
     font-size: var(--subtitle-size);
     font-weight: bold;
+    color: var(--primary-color);
 }
 
 /* NAVBAR */
@@ -71,13 +77,15 @@ html {
 /* MAIN */
 .page-wrapper {
     width: 90%;
+    height: auto;
+    min-height: 73vh;
     margin: 0 auto;
 }
 
 /* FOOTER */
 .footer {
     background-color: var(--primary-color);
-    margin: var(--std-spacing) 0;
+    margin-top: var(--std-spacing);
     padding: var(--sm-spacing);
     color: var(--secondary-color);
     text-align: center;
@@ -105,6 +113,19 @@ li .btn-floating {
     font-size: 0.9rem;
 }
 
+/* REGISTRO PELICULA */
+.movie {
+    padding: var(--sm-spacing);
+}
+
+.btn {
+    background-color: var(--primary-color);
+    width: 100%;
+}
+
+.btn:hover {
+    background-color: var(--primary-color-hover);
+}
 /* .show {
     visibility: visible !important;
 }

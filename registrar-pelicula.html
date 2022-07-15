@@ -8,68 +8,75 @@
     <link rel="stylesheet" href="./css/materialize.min.css">
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
-    <title>Series & Movies Tracking</title>
+    <title>Registrar Película | Series & Movies Tracking</title>
 </head>
 <body>
-    <main>
-        <header>
-            <div class="logo">
-                <img src="" alt="">
-            </div>
-            <h1 class="page-title">
-                Series & Movies Tracking
-            </h1>
-        </header>
-        
-        <!-- REGISTRO PELICULA O SERIE -->
-        <div class="serieOrMovie">
-            <div class="movie">
-                <!-- FORMULARIO PARA REGISTRAR PELICULA -->
-                <form action="#" class="movie_form">
-                    <input type="text" id="movie_name" placeholder="Nombre de la Película">
-    
-                    <!-- ESTADO PELICULA -->
-                    <fieldset>
-                        <legend>Elige un estado:</legend>
-                        <div class="status">
-                            <input type="radio" name="movie_status" id="seen_status_movie">
-                            <label for="seen_status_movie">Vista</label>
-                        </div>
-        
-                        <div class="status">
-                            <input type="radio" name="movie_status" id="pending_status_movie">
-                            <label for="pending_status_movie">Pendiente</label>
-                        </div>
-                    </fieldset>
-                    <input class="register-movie" type="submit" value="Registrar">
-                </form>
-            </div>
-            <div class="serie">
-                <!-- FORMULARIO PARA REGISTRAR SERIE -->
-                <form action="#" class="serie_form">
-                    <input type="text" class="serie_name" placeholder="Nombre de la serie">
-                    <input type="number" class="season" name="season" placeholder="Temporada">
-                    <input type="number" class="episode" name="episode" placeholder="Episodio">
-    
-                    <!-- ESTADO SERIE -->
-                    <fieldset>
-                        <legend>Elige un estado:</legend>
-                        <div class="status">
-                            <input type="radio" name="series_status" id="finished_status_serie">
-                            <label for="finished_status_serie">Finalizada</label>
-                        </div>
-                        
-                        <div class="status">
-                            <input type="radio" name="series_status" id="pending_status_series">
-                            <label for="pending_status_series">Pendiente</label>
-                        </div>
-                    </fieldset>
-    
-                    <input id="register-serie-btn" type="submit" value="Registrar">
-                </form>
+    <nav class="navbar">
+        <div class="nav-wrapper">
+            <a href="/" class="brand-logo left">
+                <img src="./img/logo.png" alt="Logo de la App">
+            </a>
+            <div class="app-name right">
+                <a id="nav-mobile" href="/">
+                    Series & Movies Tracking
+                </a>
             </div>
         </div>
+    </nav>
+        
+    <!-- REGISTRO PELICULA O SERIE -->
+    <main class="serieOrMovie page-wrapper">
+        <div class="movie card std-y-spacing">
+            <!-- FORMULARIO PARA REGISTRAR PELICULA -->
+            <h2 class="title card-title center-align">Registrar Película</h2>
+            <form action="#" class="movie_form">
+                <!-- TITULO PELICULA -->
+                <label for="movie_name">
+                    <p class="subtitle">Título:</p>
+                    <input 
+                        type="text" 
+                        id="movie_name" 
+                        placeholder="¿Cómo se llama la película?"
+                    />
+                </label>
+    
+                <!-- ESTADO PELICULA -->
+                
+                <div class="status std-y-spacing">
+                    <p class="subtitle">Elige un estado:</p>
+                    <label for="seen_status_movie">
+                        <input 
+                            type="radio" 
+                            name="movie_status" 
+                            id="seen_status_movie"
+                        />
+                        <span>Película Vista</span>
+                    </label>
+
+                    <label for="pending_status_movie">
+                        <input 
+                            type="radio" 
+                            name="movie_status" 
+                            id="pending_status_movie"
+                        />
+                        <span>Película Pendiente</span>
+                    </label>
+                </div>
+                <input 
+                    class="btn register-movie" 
+                    type="submit" 
+                    value="Registrar"
+                />
+            </form>
+        </div>
     </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>
+            Hecho con ❤️ por <a href="https://github.com/bl00p1ng" target="_blank" rel="noopener noreferrer">A Nerd More</a>
+        </p>
+    </footer>
 
     <!-- SCRIPTS -->
     <script src="js/util/materialize.min.js"></script>
