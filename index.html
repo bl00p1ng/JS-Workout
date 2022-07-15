@@ -4,72 +4,54 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- MATERIALIZE -->
+    <link rel="stylesheet" href="./css/materialize.min.css">
+    <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
-    <title>Series & Movies Tracker</title>
+    <title>Series & Movies Tracking</title>
 </head>
 <body>
-    <!-- REGISTRO PELICULA O SERIE -->
-    <div class="serieOrMovie">
-        <div class="movie">
-            <!-- FORMULARIO PARA REGISTRAR PELICULA -->
-            <form action="#" class="movie_form">
-                <input type="text" id="movie_name" placeholder="Nombre de la Película">
-
-                <!-- ESTADO PELICULA -->
-                <fieldset>
-                    <legend>Elige un estado:</legend>
-                    <div class="status">
-                        <input type="radio" name="movie_status" id="seen_status_movie">
-                        <label for="seen_status_movie">Vista</label>
-                    </div>
-    
-                    <div class="status">
-                        <input type="radio" name="movie_status" id="pending_status_movie">
-                        <label for="pending_status_movie">Pendiente</label>
-                    </div>
-                </fieldset>
-                <input class="register-movie" type="submit" value="Registrar">
-            </form>
+    <nav class="navbar">
+        <div class="nav-wrapper">
+            <a href="/" class="brand-logo left">
+                <img src="./img/logo.png" alt="Logo de la App">
+            </a>
+            <div class="app-name right">
+                <a id="nav-mobile" href="/">
+                    Series & Movies Tracking
+                </a>
+            </div>
         </div>
-        <div class="serie">
-            <!-- FORMULARIO PARA REGISTRAR SERIE -->
-            <form action="#" class="serie_form">
-                <input type="text" class="serie_name" placeholder="Nombre de la serie">
-                <input type="number" class="season" name="season" placeholder="Temporada">
-                <input type="number" class="episode" name="episode" placeholder="Episodio">
+    </nav>
 
-                <!-- ESTADO SERIE -->
-                <fieldset>
-                    <legend>Elige un estado:</legend>
-                    <div class="status">
-                        <input type="radio" name="series_status" id="finished_status_serie">
-                        <label for="finished_status_serie">Finalizada</label>
-                    </div>
-                    
-                    <div class="status">
-                        <input type="radio" name="series_status" id="pending_status_series">
-                        <label for="pending_status_series">Pendiente</label>
-                    </div>
-                </fieldset>
+    <main class="page-wrapper">
+        <!-- MOSTRAR PELICULAS/SERIES GUARDADAS -->
+        <header class="page-title">
+            <h1 class="title center-align">Películas y Series guardadas</h1>
+        </header>
 
-                <input id="register-serie-btn" type="submit" value="Registrar">
-            </form>
-        </div>
-    </div>
+        <!-- MOSTRAR DATOS -->
+        <section class="show-data">
+            <h2 class="subtitle">Peliculas guardadas</h2>
+            <div class="show-movies"></div>
 
-    <!-- MOSTRAR PELICULAS/SERIES GUARDADAS -->
-    <h2>Películas y Series guardadas</h2>
-    <!-- MOSTRAR DATOS -->
-    <button class="show-data-btn">Mostrar elementos guardados</button>
-    <div class="show-data">
-        <h3>Peliculas guardadas</h3>
-        <div class="show-movies"></div>
+            <h2 class="subtitle">Series guardadas</h2>
+            <div class="show-series"></div>
+        </section>
+    </main>
 
-        <h3>Series guardadas</h3>
-        <div class="show-series"></div>
-    </div>
+    <!-- BOTON FLOTANTE -->
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>
+            Hecho con ❤️ por <a href="https://github.com/bl00p1ng" target="_blank" rel="noopener noreferrer">A Nerd More</a>
+        </p>
+    </footer>
 
     <!-- SCRIPTS -->
+    <script src="js/util/materialize.min.js"></script>
     <script src="js/index.js" type="module"></script>
 </body>
 </html>

@@ -1,8 +1,94 @@
+/* BASIC */
+:root {
+    --primary-color: #6F4FE8;
+    --secondary-color: #1CEDFF;
+    --secondary-color-hover: #18a7b4;
+    --danger-color: #FF6A99;
+    --waring-color: #FFFC69;
+    --title-size: 1.6rem;
+    --subtitle-size: 1.2rem;
+    --text-size: 1rem;
+    --std-spacing: 2rem;
+    --sm-spacing: 1rem;
+}
 * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.show {
+html {
+    font-family: 62.5%;
+}
+
+/* UTILIDADES */
+.center-xy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center-y {
+    display: flex;
+    align-items: center;
+}
+
+/* TIPOGRAFIA */
+.title {
+    font-size: var(--title-size);
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.subtitle {
+    font-size: var(--subtitle-size);
+    font-weight: bold;
+}
+
+/* NAVBAR */
+.navbar {
+    background-color: var(--primary-color);
+    padding: 0 0.5rem;
+}
+
+.brand-logo {
+    display: inline-block;
+    width: 3rem;
+    margin: 0.5rem 0;
+}
+
+.brand-logo img {
+    width: 100%;
+    border-radius: 0.5rem;
+}
+
+.app-name {
+    font-size: var(--subtitle-size);
+    font-weight: bold;
+}
+
+/* MAIN */
+.page-wrapper {
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* FOOTER */
+.footer {
+    background-color: var(--primary-color);
+    margin: var(--std-spacing) 0;
+    padding: var(--sm-spacing);
+    color: var(--secondary-color);
+    text-align: center;
+}
+
+.footer a {
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+
+/* .show {
     visibility: visible !important;
 }
 
@@ -31,4 +117,4 @@ button, .register-serie, .register-movie {
     display: inline-block;
     width: 15px;
     margin-right: 5px;
-}
+} */

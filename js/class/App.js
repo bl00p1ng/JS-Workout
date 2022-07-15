@@ -105,6 +105,7 @@ export default class App {
 
         // ********** READ **********
         // Mostrar elementos guardados
+        // TODO: quitar el botón de mostrar elementos guardados y hacer que estos se muestren automaticamnete
         showDataBtn.addEventListener('click', () => {
             // Limpiar elementos existentes del DOM
             ui.clearHTML()
@@ -117,6 +118,7 @@ export default class App {
         })
 
         // ********** UPDATE y DELETE **********
+        // FIXME: refrescar la vista al actualizar una pelicula/serie
         // Actualizar o eliminar pelicula
         showMovies.addEventListener('click', e => {
             // Verificar si se esta presionando el boton de editar

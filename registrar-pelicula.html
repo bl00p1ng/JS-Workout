@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- MATERIALIZE -->
+    <link rel="stylesheet" href="./css/materialize.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <title>Series & Movies Tracking</title>
+</head>
+<body>
+    <main>
+        <header>
+            <div class="logo">
+                <img src="" alt="">
+            </div>
+            <h1 class="page-title">
+                Series & Movies Tracking
+            </h1>
+        </header>
+        
+        <!-- REGISTRO PELICULA O SERIE -->
+        <div class="serieOrMovie">
+            <div class="movie">
+                <!-- FORMULARIO PARA REGISTRAR PELICULA -->
+                <form action="#" class="movie_form">
+                    <input type="text" id="movie_name" placeholder="Nombre de la Película">
+    
+                    <!-- ESTADO PELICULA -->
+                    <fieldset>
+                        <legend>Elige un estado:</legend>
+                        <div class="status">
+                            <input type="radio" name="movie_status" id="seen_status_movie">
+                            <label for="seen_status_movie">Vista</label>
+                        </div>
+        
+                        <div class="status">
+                            <input type="radio" name="movie_status" id="pending_status_movie">
+                            <label for="pending_status_movie">Pendiente</label>
+                        </div>
+                    </fieldset>
+                    <input class="register-movie" type="submit" value="Registrar">
+                </form>
+            </div>
+            <div class="serie">
+                <!-- FORMULARIO PARA REGISTRAR SERIE -->
+                <form action="#" class="serie_form">
+                    <input type="text" class="serie_name" placeholder="Nombre de la serie">
+                    <input type="number" class="season" name="season" placeholder="Temporada">
+                    <input type="number" class="episode" name="episode" placeholder="Episodio">
+    
+                    <!-- ESTADO SERIE -->
+                    <fieldset>
+                        <legend>Elige un estado:</legend>
+                        <div class="status">
+                            <input type="radio" name="series_status" id="finished_status_serie">
+                            <label for="finished_status_serie">Finalizada</label>
+                        </div>
+                        
+                        <div class="status">
+                            <input type="radio" name="series_status" id="pending_status_series">
+                            <label for="pending_status_series">Pendiente</label>
+                        </div>
+                    </fieldset>
+    
+                    <input id="register-serie-btn" type="submit" value="Registrar">
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- SCRIPTS -->
+    <script src="js/util/materialize.min.js"></script>
+    <script src="js/index.js" type="module"></script>
+</body>
+</html>
