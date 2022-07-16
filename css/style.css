@@ -5,6 +5,7 @@
     --secondary-color: #1CEDFF;
     --secondary-color-hover: #18a7b4;
     --danger-color: #FF6A99;
+    --danger-color-hover: #df5983;
     --waring-color: #FFFC69;
     --title-size: 1.6rem;
     --subtitle-size: 1.2rem;
@@ -30,6 +31,10 @@ html {
     align-items: center;
 }
 
+.reset-margins {
+    margin: 0;
+}
+
 .center-y {
     display: flex;
     align-items: center;
@@ -39,8 +44,16 @@ html {
     margin: var(--std-spacing) 0;
 }
 
+.std-bottom-spacing {
+    margin-bottom: var(--std-spacing);
+}
+
 .sm-top-spacing {
     margin-top: var(--sm-spacing);
+}
+
+.sm-y-spacing {
+    margin: var(--sm-spacing) 0;
 }
 
 /* TIPOGRAFIA */
@@ -118,7 +131,7 @@ li .btn-floating {
 }
 
 /* REGISTRO PELICULA */
-.movie, .serie {
+.card {
     padding: var(--sm-spacing);
 }
 
@@ -131,9 +144,43 @@ li .btn-floating {
     background-color: var(--primary-color-hover);
 }
 
-/* REGISTRO SERIE */
+/* MOSTRAR DATOS */
+.edit-btn, .delete-btn {
+    padding: 0.3rem;
+}
+.edit-btn svg, .delete-btn svg {
+    height: 100%;
+    margin-right: 0.5rem;
+}
 
+.delete-btn {
+    background-color: var(--danger-color);
+}
 
+.delete-btn:hover {
+    background-color: var(--danger-color-hover);
+}
+
+.delete-btn:focus {
+    background-color: var(--danger-color-hover);
+}
+
+.seen, .pending {
+    font-weight: 700;
+}
+
+.seen span {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    padding: 0.2rem 0.6rem;
+    border-radius: 0.5rem;
+}
+
+.pending span {
+    background-color: var(--waring-color);
+    padding: 0.2rem 0.6rem;
+    border-radius: 0.5rem;
+}
 /* .show {
     visibility: visible !important;
 }
