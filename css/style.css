@@ -124,6 +124,9 @@ li .btn-floating {
 }
 
 .fixed-action-btn ul li span {
+    background-color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.5rem;
     position: absolute;
     right: 4rem;
     font-weight: bold;
