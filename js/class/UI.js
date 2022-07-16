@@ -61,12 +61,18 @@ export default class UI {
         moviesList.forEach(movie => {
             // Div que alberga los datos de la pelicula
             const movieView = document.createElement('div')
-            movieView.classList.add('movie-view', 'card', 'std-y-spacing')
+            movieView.classList.add('movie-view', 
+                                    'card', 
+                                    'std-y-spacing')
             movieView.dataset.id = movie.id
             
             // Título de la película
             const movieTitle = document.createElement('h4')
-            movieTitle.classList.add('subtitle', 'card-title', 'center-align', 'std-bottom-spacing', 'reset-margins')
+            movieTitle.classList.add('subtitle', 
+                                     'card-title', 
+                                     'center-align', 
+                                     'std-bottom-spacing', 
+                                     'reset-margins')
             movieTitle.textContent = movie.name
             
             // Estado de la pelicula
@@ -82,13 +88,59 @@ export default class UI {
 
             // Botón de editar
             const editBtn = document.createElement('button')
-            editBtn.classList.add('edit-btn', 'btn', 'center-xy', 'sm-y-spacing', 'waves-effect', 'waves-light')
-            editBtn.innerHTML = '<svg class="w-6 h-6" data-darkreader-inline-stroke="" fill="none" stroke="currentColor" style="--darkreader-inline-stroke: currentColor;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg> <span>Editar</span>'
+            editBtn.classList.add('edit-btn', 
+                                  'btn', 
+                                  'center-xy', 
+                                  'sm-y-spacing', 
+                                  'waves-effect', 
+                                  'waves-light')
+            editBtn.innerHTML = `
+                <svg 
+                    class="w-6 h-6" 
+                    data-darkreader-inline-stroke="" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    style="--darkreader-inline-stroke: currentColor;" 
+                    viewBox="0 0 24 24" 
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path 
+                        stroke-linecap="round" 
+                        stroke-linejoin="round" 
+                        stroke-width="2" 
+                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                    ></path>
+                </svg> 
+                <span>Editar</span>
+            `
 
             // Botón de eliminar
             const deleteBtn = document.createElement('button')
-            deleteBtn.classList.add('delete-btn', 'btn', 'center-xy', 'sm-y-spacing', 'waves-effect', 'waves-light')
-            deleteBtn.innerHTML = '<svg class="w-6 h-6" data-darkreader-inline-stroke="" fill="none" stroke="currentColor" style="--darkreader-inline-stroke: currentColor;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg> <span>Eliminar</span>'
+            deleteBtn.classList.add('delete-btn', 
+                                    'btn', 
+                                    'center-xy', 
+                                    'sm-y-spacing', 
+                                    'waves-effect', 
+                                    'waves-light')
+            deleteBtn.innerHTML = `
+                <svg 
+                    class="w-6 h-6" 
+                    data-darkreader-inline-stroke="" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    style="--darkreader-inline-stroke: currentColor;" 
+                    viewBox="0 0 24 24" 
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path 
+                        stroke-linecap="round" 
+                        stroke-linejoin="round" 
+                        stroke-width="2" 
+                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                    ></path>
+                </svg> 
+                <span>Eliminar</span>
+            `
             
             // Agregar el titulo, el estado, el boton de editar y eliminar al DIV movieView
             movieView.appendChild(movieTitle)
@@ -108,11 +160,18 @@ export default class UI {
         seriesList.forEach(series => {
             // Div que alberga los datos de la serie
             const serieView = document.createElement('div')
-            serieView.classList.add('serie-view')
+            serieView.classList.add('serie-view', 
+                                    'card', 
+                                    'std-y-spacing')
             serieView.dataset.id = series.id
             
             // Título de la serie
             const serieTitle = document.createElement('h4')
+            serieTitle.classList.add('subtitle', 
+                                     'card-title', 
+                                     'center-align', 
+                                     'std-bottom-spacing', 
+                                     'reset-margins')
             serieTitle.textContent = series.name
     
             // Temporada
@@ -125,17 +184,70 @@ export default class UI {
     
             // Estado de la serie
             const serieStatus = document.createElement('span')
-            serieStatus.textContent = series.status
+            serieStatus.innerHTML = `Estado: <span>${series.status}</span>`
+
+            // Agregar una clase para dar estilos según si la película ha sido vista o no
+            if (series.status === 'Finalizada') {
+                serieStatus.classList.add('seen')
+            } else {
+                serieStatus.classList.add('pending')
+            }
 
             // Botón de editar
             const editBtn = document.createElement('button')
-            editBtn.classList.add('edit-btn')
-            editBtn.innerHTML = '<span class="edit-icon"><svg class="w-6 h-6" data-darkreader-inline-stroke="" fill="none" stroke="currentColor" style="--darkreader-inline-stroke: currentColor;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg></span> Editar'
+            editBtn.classList.add('edit-btn', 
+                                  'btn', 
+                                  'center-xy', 
+                                  'sm-y-spacing', 
+                                  'waves-effect', 
+                                  'waves-light')
+            editBtn.innerHTML = `
+                <svg 
+                    class="w-6 h-6" 
+                    data-darkreader-inline-stroke="" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    style="--darkreader-inline-stroke: currentColor;" 
+                    viewBox="0 0 24 24" 
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path 
+                        stroke-linecap="round" 
+                        stroke-linejoin="round" 
+                        stroke-width="2" 
+                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                    ></path>
+                </svg> 
+                <span>Editar</span>
+            `
 
             // Botón de eliminar
             const deleteBtn = document.createElement('button')
-            deleteBtn.classList.add('delete-btn')
-            deleteBtn.innerHTML = '<span class="delete-icon"><svg class="w-6 h-6" data-darkreader-inline-stroke="" fill="none" stroke="currentColor" style="--darkreader-inline-stroke: currentColor;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></span> Eliminar'
+            deleteBtn.classList.add('delete-btn', 
+                                    'btn', 
+                                    'center-xy', 
+                                    'sm-y-spacing', 
+                                    'waves-effect', 
+                                    'waves-light')
+            deleteBtn.innerHTML = `
+                <svg 
+                    class="w-6 h-6" 
+                    data-darkreader-inline-stroke="" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    style="--darkreader-inline-stroke: currentColor;" 
+                    viewBox="0 0 24 24" 
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path 
+                        stroke-linecap="round" 
+                        stroke-linejoin="round" 
+                        stroke-width="2" 
+                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                    ></path>
+                </svg> 
+                <span>Eliminar</span>
+            `
     
             // Agregar elementos al DIV serieView
             serieView.appendChild(serieTitle)

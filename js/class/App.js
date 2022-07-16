@@ -88,7 +88,7 @@ export default class App {
 
         // Resgistrar serie
         if (serieForm) {
-            serieForm.addEventListener('DOMContentLoaded', e => {
+            serieForm.addEventListener('submit', e => {
                 e.preventDefault()
     
                 // Verificar si el boton esta en modo crear o actualizar
