@@ -125,7 +125,7 @@ export default class App {
         // Actualizar o eliminar pelicula
         showMovies.addEventListener('click', e => {
             // Verificar si se esta presionando el boton de editar
-            if (e.target.classList.contains('edit-btn')) {
+            if (e.target.dataset.role === 'edit') {
                 // Obtener el ID de la pelicula a actualizar
                 const idToUpdate = ui.updateMovie(e)
 
@@ -136,7 +136,7 @@ export default class App {
                 ui.changeButtonRole('Actualizar', 'movie')
             }
             // Verificar si se esta presionando el boton de eliminar
-            else if (e.target.classList.contains('delete-btn')) {
+            else if (e.target.dataset.role === 'delete') {
                 // Obtener el ID de la pelicula a eliminar
                 const idToDelete = ui.deleteMovie(e)
 
@@ -155,7 +155,7 @@ export default class App {
         // Actualizar o eliminar serie
         showSeries.addEventListener('click', e => {
             // Verificar si se esta presionando el boton de editar
-            if (e.target.classList.contains('edit-btn')) {
+            if (e.target.dataset.role === 'edit') {
                 // Obtener el ID de la serie a actualizar
                 const idToUpdate = ui.updateSeries(e)
  
@@ -166,7 +166,7 @@ export default class App {
                 ui.changeButtonRole('Actualizar', 'series')
             }
             // Verificar si se esta presionando el boton de eliminar
-            else if (e.target.classList.contains('delete-btn')) {
+            else if (e.target.dataset.role === 'delete') {
                 // Obtener el ID de la serie a eliminar
                 const idToDelete = ui.deleteSeries(e)
 
