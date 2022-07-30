@@ -58,7 +58,7 @@ export default class App {
     
                 // Verificar si el boton esta en modo crear o actualizar
                 const buttonStatus = e.target.children[2].value
-    
+
                 if (buttonStatus === 'Registrar') {  // Registrar pelicula
                     // Obtener datos del form
                     const movieData = ui.getMovieFromForm()
@@ -121,16 +121,18 @@ export default class App {
         }
 
         // ********** UPDATE y DELETE **********
-        // FIXME: refrescar la vista al actualizar una pelicula/serie
         // Actualizar o eliminar pelicula
         showMovies.addEventListener('click', e => {
             // Verificar si se esta presionando el boton de editar
             if (e.target.dataset.role === 'edit') {
                 // Obtener el ID de la pelicula a actualizar
-                const idToUpdate = ui.updateMovie(e)
-
-                // Guardar el ID en localStorage para que este disponible al editar la pelicula
+                const idToUpdate = parseInt(e.target.parentNode.parentNode.dataset.id)
+                
+                // Guardar el ID a actualizar en localStorage para usarlo al actualizar los datos
                 localStorage.setItem('idMovieToUpdate', idToUpdate)
+
+                // Actualizar los datos de la película
+                ui.updateMovie(idToUpdate)
 
                 // Cambiar texto del botón de 'Registrar' a 'Actualizar'
                 ui.changeButtonRole('Actualizar', 'movie')

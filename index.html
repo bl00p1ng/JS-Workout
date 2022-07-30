@@ -40,6 +40,50 @@
         </section>
     </main>
 
+    <!-- MODAL PARA REGISTRAR PELICULA -->
+    <div id="register-movie-modal" class="modal card">
+        <!-- FORMULARIO PARA REGISTRAR PELICULA -->
+        <h1 class="title card-title center-align">Registrar Película</h1>
+        <form action="#" class="movie_form">
+            <!-- TITULO PELICULA -->
+            <label for="movie_name">
+                <p class="subtitle">Título:</p>
+                <input 
+                    type="text" 
+                    id="movie_name" 
+                    placeholder="¿Cómo se llama la película?"
+                />
+            </label>
+
+            <!-- ESTADO PELICULA -->
+            <div class="status std-y-spacing">
+                <p class="subtitle">Elige un estado:</p>
+                <label for="seen_status_movie">
+                    <input 
+                        type="radio" 
+                        name="movie_status" 
+                        id="seen_status_movie"
+                    />
+                    <span>Película Vista</span>
+                </label>
+
+                <label for="pending_status_movie">
+                    <input 
+                        type="radio" 
+                        name="movie_status" 
+                        id="pending_status_movie"
+                    />
+                    <span>Película Pendiente</span>
+                </label>
+            </div>
+            <input 
+                class="btn register-movie modal-close" 
+                type="submit" 
+                value="Registrar"
+            />
+        </form>
+    </div>
+
     <!-- BOTON FLOTANTE -->
     <div class="fixed-action-btn">
         <a class="btn-floating btn-large waves-effect waves-light z-depth-3" title="Crear un registro">

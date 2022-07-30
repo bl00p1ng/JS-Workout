@@ -90,6 +90,7 @@ export default class UI {
             const editBtn = document.createElement('button')
             editBtn.classList.add('edit-btn', 
                                   'btn', 
+                                  'modal-trigger', 
                                   'center-xy', 
                                   'sm-y-spacing', 
                                   'waves-effect', 
@@ -97,6 +98,7 @@ export default class UI {
 
             // Propiedad para accionar la funcionalidad del boton
             editBtn.dataset.role = 'edit'
+            editBtn.dataset.target = 'register-movie-modal'
 
             editBtn.innerHTML = `
                 <svg 
@@ -283,25 +285,31 @@ export default class UI {
     }
 
     // Actualizar pelicula
-    updateMovie(e) {
+    updateMovie(idToUpdate) {
         // Obtener los datos actuales de la pelicula
-        const currentId = e.target.parentNode.attributes[1].value
-        const currentName = e.target.parentNode.children[0].textContent
-        const currentStatus = e.target.parentNode.children[1].textContent
+        const moviesData = JSON.parse(localStorage.getItem('movies'))
+        let currentMovieData = {}  // Almacena los datos actuales de la película
+
+        moviesData.forEach(movie => {
+            if (movie.id === idToUpdate) {
+                currentMovieData.id = idToUpdate
+                currentMovieData.name = movie.name
+                currentMovieData.status = movie.status
+            }
+        })
 
         // Reemplazar los campos del form con los datos actuales
-        movieName.value = currentName
+        const {name, status} = currentMovieData
+        movieName.value = name
 
         // Modificar el input radio en base al estado
-        if (currentStatus === 'Vista') {
+        if (status === 'Vista') {
             pendingStatusMovie.removeAttribute('checked')
             seenStatusMovie.setAttribute('checked', true)
-        } else if (currentStatus === 'Pendiente') {
+        } else if (status === 'Pendiente') {
             seenStatusMovie.removeAttribute('checked')
             pendingStatusMovie.setAttribute('checked', true)
         }
-
-        return currentId
     }
 
     // Actualizar serie

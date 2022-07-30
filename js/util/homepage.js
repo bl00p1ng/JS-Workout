@@ -1,7 +1,15 @@
-// Scripts del home page
-
-// Habilitar el botón flotante
 document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.fixed-action-btn');
-    var instances = M.FloatingActionButton.init(elems);
+    // Habilitar el botón flotante
+    const floatingBtn = document.querySelectorAll('.fixed-action-btn');
+    const instancesFloatingBtn = M.FloatingActionButton.init(floatingBtn);
+
+    // Habilitar el modal
+    const modals = document.querySelectorAll('.modal');
+    const instancesModal = M.Modal.init(modals, {
+        // Refrescar la página al cerrar el modal
+        onCloseEnd: () => {
+            window.location.reload()
+        }
+    })
+
 });
