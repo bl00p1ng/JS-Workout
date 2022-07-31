@@ -77,16 +77,91 @@
                 </label>
             </div>
             <input 
-                class="btn register-movie modal-close" 
+                id="register-movie-btn" 
+                class="btn modal-close" 
                 type="submit" 
                 value="Registrar"
             />
         </form>
     </div>
 
+    <!-- MODAL PARA REGISTRAR PELICULA -->
+    <div id="register-serie-modal" class="modal card">
+        <!-- FORMULARIO PARA REGISTRAR SERIE -->
+        <h1 class="title card-title center-align">Registrar Serie</h1>
+
+        <form action="#" class="serie_form">
+            <label for="series_title">
+                <p class="subtitle sm-top-spacing">Título:</p>
+                <input 
+                    type="text" 
+                    id="series_title" 
+                    class="serie_name" 
+                    placeholder="¿Cómo se llama la serie?"
+                />
+            </label>
+
+            <label for="season">
+                <p class="subtitle sm-top-spacing">Temporada:</p>
+                <input 
+                    type="number" 
+                    id="season"
+                    class="season" 
+                    name="season" 
+                    placeholder="¿Qué temporada te estás viendo?"
+                />
+            </label>
+
+            <label for="episode">
+                <p class="subtitle sm-top-spacing">Episodio:</p>
+                <input 
+                    type="number" 
+                    id="episode"
+                    class="episode" 
+                    name="episode" 
+                    placeholder="¿En qué episodio vas?"
+                />
+            </label>
+
+            <!-- ESTADO SERIE -->
+            <div class="status std-y-spacing">
+                <p class="subtitle sm-top-spacing">Elige un estado:</p>
+
+                <label for="finished_status_serie">
+                    <input 
+                        type="radio" 
+                        name="series_status" 
+                        id="finished_status_serie"
+                    />
+                    <span>Serie Finalizada</span>
+                </label>
+            
+                <label for="pending_status_series">
+                    <input 
+                        type="radio" 
+                        name="series_status" 
+                        id="pending_status_series"
+                    />
+                    <span>Serie Pendiente</span>
+                </label>
+            </div>
+
+            <input class="btn modal-close" id="register-serie-btn" type="submit" value="Registrar">
+        </form>
+    </div>
+
+
     <!-- BOTON FLOTANTE -->
     <div class="fixed-action-btn">
-        <a class="btn-floating btn-large waves-effect waves-light z-depth-3" title="Crear un registro">
+        <a 
+            class="
+                btn-floating 
+                btn-large 
+                waves-effect 
+                waves-light 
+                z-depth-3" 
+            title="Crear un registro"
+        >
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
             </svg>
@@ -106,7 +181,11 @@
             </li>
             <li>
                 <span class="z-depth-3">Registrar Serie</span>
-                <a href="/registrar-serie.html" class="btn-floating z-depth-3" title="Registrar Serie">
+                <a 
+                    href="#register-serie-modal" 
+                    class="btn-floating modal-trigger z-depth-3" 
+                    title="Registrar Serie"
+                >
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                         <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z" />
                     </svg>

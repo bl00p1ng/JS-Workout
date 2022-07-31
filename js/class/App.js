@@ -2,7 +2,6 @@ import UI from './UI.js';
 import {movieForm, 
         serieForm,
         showMovies,
-        registerMovie,
         showSeries,
         showData} from '../selectors.js'
 import Movies from './Movies.js';
