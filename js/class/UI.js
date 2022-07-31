@@ -64,8 +64,7 @@ export default class UI {
             movieView.classList.add('movie-view', 
                                     'card', 
                                     'std-y-spacing')
-            movieView.dataset.id = movie.id
-            
+
             // Título de la película
             const movieTitle = document.createElement('h4')
             movieTitle.classList.add('subtitle', 
@@ -88,6 +87,10 @@ export default class UI {
 
             // Botón de editar
             const editBtn = document.createElement('button')
+
+            // Guardar el id para usarlo al editar la película
+            editBtn.dataset.id = movie.id
+
             editBtn.classList.add('edit-btn', 
                                   'btn', 
                                   'modal-trigger', 
@@ -103,6 +106,7 @@ export default class UI {
             editBtn.innerHTML = `
                 <svg 
                     data-role="edit"
+                    data-id="${movie.id}"
                     class="w-6 h-6" 
                     data-darkreader-inline-stroke="" 
                     fill="none" 
@@ -118,7 +122,12 @@ export default class UI {
                         d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
                     ></path>
                 </svg> 
-                <span data-role="edit">Editar</span>
+                <span 
+                    data-role="edit" 
+                    data-id="${movie.id}"
+                >
+                    Editar
+                </span>
             `
 
             // Botón de eliminar
