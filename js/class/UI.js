@@ -228,6 +228,7 @@ export default class UI {
             const editBtn = document.createElement('button')
             editBtn.classList.add('edit-btn', 
                                   'btn', 
+                                  'modal-trigger', 
                                   'center-xy', 
                                   'sm-y-spacing', 
                                   'waves-effect', 
@@ -235,10 +236,15 @@ export default class UI {
 
             // Propiedad para accionar la funcionalidad del boton
             editBtn.dataset.role = 'edit'
+            // Guardar el id para usarlo al editar la serie
+            editBtn.dataset.id = series.id
+            // ID del modal que se abrirá al hacer click
+            editBtn.dataset.target = 'register-serie-modal'
 
             editBtn.innerHTML = `
                 <svg 
                     data-role="edit"
+                    data-id="${series.id}"
                     class="w-6 h-6" 
                     data-darkreader-inline-stroke="" 
                     fill="none" 
@@ -254,7 +260,12 @@ export default class UI {
                         d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
                     ></path>
                 </svg> 
-                <span data-id="edit">Editar</span>
+                <span 
+                    data-role="edit"
+                    data-id="${series.id}"
+                >
+                    Editar
+                </span>
             `
 
             // Botón de eliminar
@@ -268,10 +279,13 @@ export default class UI {
 
             // Propiedad para accionar la funcionalidad del boton
             deleteBtn.dataset.role = 'delete'
+            // Guardar el id para usarlo al borraar la serie
+            deleteBtn.dataset.id = series.id
 
             deleteBtn.innerHTML = `
                 <svg 
                     data-role="delete"
+                    data-id="${series.id}"
                     class="w-6 h-6" 
                     data-darkreader-inline-stroke="" 
                     fill="none" 
@@ -287,7 +301,12 @@ export default class UI {
                         d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
                     ></path>
                 </svg> 
-                <span data-role="delete">Eliminar</span>
+                <span 
+                    data-role="delete"
+                    data-id="${series.id}"
+                >
+                    Eliminar
+                </span>
             `
     
             // Agregar elementos al DIV serieView
@@ -332,29 +351,34 @@ export default class UI {
     }
 
     // Actualizar serie
-    updateSeries(e) {
+    updateSeries(idToUpdate) {
         // Obtener los datos actuales de la serie
-        const currentId = e.target.parentNode.attributes[1].value
-        const currentName = e.target.parentNode.children[0].textContent
-        const currentSeason = e.target.parentNode.children[1].textContent.replace(/[^0-9]/g, '')
-        const currentEpisode = e.target.parentNode.children[2].textContent.replace(/[^0-9]/g, '')
-        const currentStatus = e.target.parentNode.children[3].textContent
+        const seriesData = JSON.parse(localStorage.getItem('series'))
+        let currentSeriesData = {}  // Almacena los datos actuales de la película
+
+        seriesData.forEach(series => {
+            if (series.id === idToUpdate) {
+                currentSeriesData.id = idToUpdate
+                currentSeriesData.name = series.name
+                currentSeriesData.season = series.season
+                currentSeriesData.episode = series.episode
+                currentSeriesData.status = series.status
+            }
+        })
 
         // Reemplazar los campos del form con los datos actuales
-        serieName.value = currentName
-        season.value = currentSeason
-        episode.value = currentEpisode
+        serieName.value = currentSeriesData.name
+        season.value = currentSeriesData.season
+        episode.value = currentSeriesData.episode
 
         // Modificar el input radio en base al estado
-        if (currentStatus === 'Finalizada') {
+        if (currentSeriesData.status === 'Finalizada') {
             pendingStatusSerie.removeAttribute('checked')
             finishedStatusSerie.setAttribute('checked', true)
-        } else if (currentStatus === 'Pendiente') {
+        } else if (currentSeriesData.status === 'Pendiente') {
             finishedStatusSerie.removeAttribute('checked')
             pendingStatusSerie.setAttribute('checked', true)
         }
-
-        return currentId
     }
 
     // Eliminar pelicula

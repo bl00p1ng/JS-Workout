@@ -158,10 +158,13 @@ export default class App {
             // Verificar si se esta presionando el boton de editar
             if (e.target.dataset.role === 'edit') {
                 // Obtener el ID de la serie a actualizar
-                const idToUpdate = ui.updateSeries(e)
+                const idToUpdate = parseInt(e.target.dataset.id)
  
                 // Guardar el ID en localStorage para que este disponible al editar la serie
                 localStorage.setItem('idSerieToUpdate', idToUpdate)
+
+                // Actualizar los datos de la serie
+                ui.updateSeries(idToUpdate)
  
                 // Cambiar texto del botón de 'Registrar' a 'Actualizar'
                 ui.changeButtonRole('Actualizar', 'series')
