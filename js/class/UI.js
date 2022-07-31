@@ -402,7 +402,7 @@ export default class UI {
 
         if (confirmDelete) {
             // Obtener el ID de la serie a eliminar
-            const idToDelete = e.target.parentNode.attributes[1].value
+            const idToDelete = e.target.dataset.id
             return idToDelete
         } else {
             return null
