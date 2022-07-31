@@ -132,6 +132,10 @@ export default class UI {
 
             // Botón de eliminar
             const deleteBtn = document.createElement('button')
+
+            // Guardar el id para usarlo al eliminar la película
+            deleteBtn.dataset.id = movie.id
+
             deleteBtn.classList.add('delete-btn', 
                                     'btn', 
                                     'center-xy', 
@@ -145,6 +149,7 @@ export default class UI {
             deleteBtn.innerHTML = `
                 <svg 
                     data-role="delete"
+                    data-id="${movie.id}"
                     class="w-6 h-6" 
                     data-darkreader-inline-stroke="" 
                     fill="none" 
@@ -160,7 +165,12 @@ export default class UI {
                         d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
                     ></path>
                 </svg> 
-                <span data-role="delete">Eliminar</span>
+                <span 
+                    data-role="delete"
+                    data-id="${movie.id}"
+                >
+                    Eliminar
+                </span>
             `
             
             // Agregar el titulo, el estado, el boton de editar y eliminar al DIV movieView
@@ -354,7 +364,7 @@ export default class UI {
 
         if (confirmDelete) {
             // Obtener el ID de la película a eliminar
-            const idToDelete = e.target.parentNode.attributes[1].value
+            const idToDelete = e.target.dataset.id
             return idToDelete
         } else {
             return null

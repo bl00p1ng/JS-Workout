@@ -127,8 +127,7 @@ export default class App {
             if (e.target.dataset.role === 'edit') {
                 // Obtener el ID de la pelicula a actualizar
                 const idToUpdate = parseInt(e.target.dataset.id)
-                console.log(idToUpdate);
-                
+
                 // Guardar el ID a actualizar en localStorage para usarlo al actualizar los datos
                 localStorage.setItem('idMovieToUpdate', idToUpdate)
 
