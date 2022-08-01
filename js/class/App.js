@@ -20,6 +20,7 @@ export default class App {
         const series = new Series();
 
         // Cargar datos desde localStorage
+        // TODO: Si no hay datos, mostrar un mensaje que invite a hacer un registro
         document.addEventListener('DOMContentLoaded', () => {
             // Obtener datos
             const moviesData = JSON.parse(localStorage.getItem('movies'))

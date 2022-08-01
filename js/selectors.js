@@ -13,8 +13,8 @@ export const registerMovie = document.querySelector('#register-movie-btn')
 
 // ********** SERIES **********
 export const serieName = document.querySelector('.serie_name')
-export const season = document.querySelector('.season')
-export const episode = document.querySelector('.episode')
+export const serieSeason = document.querySelector('.season')
+export const serieEpisode = document.querySelector('.episode')
 export const finishedStatusSerie = document.querySelector('#finished_status_serie')
 export const pendingStatusSerie = document.querySelector('#pending_status_series')
 // Botón submit form series

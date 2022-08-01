@@ -7,8 +7,8 @@ import {showMovies,
         serieName,
         finishedStatusSerie,
         pendingStatusSerie,
-        season,
-        episode,
+        serieSeason,
+        serieEpisode,
         registerSerie} from '../selectors.js'
 
 export default class UI {
@@ -46,8 +46,8 @@ export default class UI {
         const seriesData = {
             id: Date.now(),
             name: serieName.value,
-            season: parseInt(season.value),
-            episode: parseInt(episode.value),
+            season: parseInt(serieSeason.value),
+            episode: parseInt(serieEpisode.value),
             status: serieStatus
         }
 
@@ -326,18 +326,10 @@ export default class UI {
     updateMovie(idToUpdate) {
         // Obtener los datos actuales de la pelicula
         const moviesData = JSON.parse(localStorage.getItem('movies'))
-        let currentMovieData = {}  // Almacena los datos actuales de la película
-
-        moviesData.forEach(movie => {
-            if (movie.id === idToUpdate) {
-                currentMovieData.id = idToUpdate
-                currentMovieData.name = movie.name
-                currentMovieData.status = movie.status
-            }
-        })
+        const currentMovieData = moviesData.filter(movie => movie.id === idToUpdate)
 
         // Reemplazar los campos del form con los datos actuales
-        const {name, status} = currentMovieData
+        const {name, status} = currentMovieData[0]
         movieName.value = name
 
         // Modificar el input radio en base al estado
@@ -354,28 +346,19 @@ export default class UI {
     updateSeries(idToUpdate) {
         // Obtener los datos actuales de la serie
         const seriesData = JSON.parse(localStorage.getItem('series'))
-        let currentSeriesData = {}  // Almacena los datos actuales de la película
-
-        seriesData.forEach(series => {
-            if (series.id === idToUpdate) {
-                currentSeriesData.id = idToUpdate
-                currentSeriesData.name = series.name
-                currentSeriesData.season = series.season
-                currentSeriesData.episode = series.episode
-                currentSeriesData.status = series.status
-            }
-        })
+        const currentSeriesData = seriesData.filter(series => series.id === idToUpdate)
 
         // Reemplazar los campos del form con los datos actuales
-        serieName.value = currentSeriesData.name
-        season.value = currentSeriesData.season
-        episode.value = currentSeriesData.episode
+        const {name, status, season, episode} = currentSeriesData[0]
+        serieName.value = name
+        serieSeason.value = season
+        serieEpisode.value = episode
 
         // Modificar el input radio en base al estado
-        if (currentSeriesData.status === 'Finalizada') {
+        if (status === 'Finalizada') {
             pendingStatusSerie.removeAttribute('checked')
             finishedStatusSerie.setAttribute('checked', true)
-        } else if (currentSeriesData.status === 'Pendiente') {
+        } else if (status === 'Pendiente') {
             finishedStatusSerie.removeAttribute('checked')
             pendingStatusSerie.setAttribute('checked', true)
         }
