@@ -20,7 +20,6 @@ export default class App {
         const series = new Series();
 
         // Cargar datos desde localStorage
-        // TODO: Si no hay datos, mostrar un mensaje que invite a hacer un registro
         document.addEventListener('DOMContentLoaded', () => {
             // Obtener datos
             const moviesData = JSON.parse(localStorage.getItem('movies'))
@@ -38,10 +37,20 @@ export default class App {
 
             // ********** READ **********
             // Mostrar elementos guardados en la UI
-            if (showData) {
-                // Limpiar elementos existentes del DOM
-                ui.clearHTML()
+            if (moviesData === null || moviesData.length === 0) {
+                /* Si no hay datos, mostrar un mensaje que indique 
+                que no hay películas registradas */
+                ui.noData('No hay películas guardadas. Pulsa el botón + para crear una', showMovies)
+            }
 
+            if (seriesData === null || seriesData.length === 0) {
+                /* Si no hay datos, mostrar un mensaje que indique 
+                que no hay series registradas */
+                ui.noData('No hay series guardadas. Pulsa el botón + para crear una', showSeries)
+            }
+
+            if (moviesData || seriesData) {
+                // Si hay datos, mostrarlos en el DOM
                 const moviesList = movies.getMovies()  // Obtener el listado de peliculas guardadas
                 ui.showMovies(moviesList)  // Mostrar peliculas
         

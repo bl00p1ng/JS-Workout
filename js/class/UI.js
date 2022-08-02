@@ -413,4 +413,15 @@ export default class UI {
             showSeries.removeChild(showSeries.firstElementChild)
         }
     }
+
+    // Mostrar un mensaje que indique que no hay registros en la DB
+    noData(msg, element) {
+        element.classList.add('show')
+
+        const noDataMessage = document.createElement('p')
+        noDataMessage.classList.add('subtitle', 'center-align')
+        noDataMessage.textContent = msg
+
+        element.appendChild(noDataMessage)
+    }
 }
