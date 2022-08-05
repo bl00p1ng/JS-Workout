@@ -7,9 +7,9 @@
     --danger-color: #FF6A99;
     --danger-color-hover: #df5983;
     --waring-color: #FFFC69;
-    --title-size: 1.6rem;
-    --subtitle-size: 1.2rem;
-    --text-size: 1rem;
+    --title-size: 1.8rem;
+    --subtitle-size: 1.5rem;
+    --text-size: 1.2rem;
     --std-spacing: 2rem;
     --sm-spacing: 1rem;
 }
@@ -17,7 +17,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 html {
@@ -65,7 +65,7 @@ html {
 
 .subtitle {
     font-size: var(--subtitle-size);
-    font-weight: 300;
+    font-weight: 500;
     color: var(--primary-color);
 }
 
@@ -123,13 +123,17 @@ li .btn-floating {
     padding: 0.5rem;
 }
 
+.fixed-action-btn {
+    bottom: 3rem;
+}
+
 .fixed-action-btn ul li span {
     background-color: white;
     padding: 0.2rem 0.5rem;
     border-radius: 0.5rem;
     position: absolute;
     right: 4rem;
-    font-weight: bold;
+    font-weight: 500;
     font-size: 0.9rem;
 }
 
@@ -190,34 +194,3 @@ li .btn-floating {
     font-weight: 700;
     margin-bottom: 0.5rem;
 }
-
-/* .show {
-    visibility: visible !important;
-}
-
-.movie-view, .serie-view {
-    border: 1px solid black;
-    border-radius: 5px;
-    margin: 10px 0;
-    padding: 10px;
-}
-
-.show-movies, .show-series {
-    visibility: hidden;
-}
-
-button, .register-serie, .register-movie {
-    margin: 5px 0;
-}
-
-.edit-btn, .delete-btn {
-    display: flex;
-    justify-content: space-around;
-    align-content: center;
-}
-
-.edit-icon, .delete-icon {
-    display: inline-block;
-    width: 15px;
-    margin-right: 5px;
-} */

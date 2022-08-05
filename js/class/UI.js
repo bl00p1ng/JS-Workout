@@ -419,7 +419,7 @@ export default class UI {
         element.classList.add('show')
 
         const noDataMessage = document.createElement('p')
-        noDataMessage.classList.add('subtitle', 'center-align')
+        noDataMessage.classList.add('center-align')
         noDataMessage.textContent = msg
 
         element.appendChild(noDataMessage)
