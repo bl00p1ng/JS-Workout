@@ -89,6 +89,7 @@ html {
 .app-name {
     font-size: var(--subtitle-size);
     font-weight: bold;
+    margin-right: 0.4rem;
 }
 
 /* MAIN */
