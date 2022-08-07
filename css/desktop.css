@@ -1,0 +1,10 @@
+.show-movies, .show-series {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.show-movies .card, .show-series .card {
+    width: 33%;
+    min-width: 20rem;
+}

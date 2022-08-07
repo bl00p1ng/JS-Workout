@@ -1,0 +1,12 @@
+/* Responsive tablet (>= 600 px) */
+.show-movies, .show-series {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    offset: 1rem;
+}
+
+.show-movies .card, .show-series .card {
+    width: 40%;
+    min-width: 15rem;
+}
